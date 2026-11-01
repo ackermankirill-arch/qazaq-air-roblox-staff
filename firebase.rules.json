@@ -13,7 +13,7 @@
       ".read": "auth != null && (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')",
       "$uid": {
         ".read": "auth != null && (auth.uid === $uid || (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT'))",
-        ".write": "auth != null && ((root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT') || (auth.uid === $uid && ((!data.exists() && newData.child('role').val() === 'Участник' && newData.child('status').val() === 'pending' && newData.child('warnings').val() === 0 && !newData.child('discipline').exists()) || (data.exists() && newData.child('role').val() === data.child('role').val() && newData.child('status').val() === data.child('status').val() && newData.child('warnings').val() === data.child('warnings').val() && newData.child('discipline').val() === data.child('discipline').val()))))"
+        ".write": "auth != null && ((root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT') || (auth.uid === $uid && ((!data.exists() && newData.child('role').val() === 'Участник' && newData.child('status').val() === 'approved' && newData.child('warnings').val() === 0 && !newData.child('discipline').exists()) || (data.exists() && newData.child('role').val() === data.child('role').val() && newData.child('status').val() === data.child('status').val() && newData.child('warnings').val() === data.child('warnings').val() && newData.child('discipline').val() === data.child('discipline').val()))))"
       }
     },
     "flights": {
@@ -56,8 +56,14 @@
             ".write": "auth != null && (((root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')) || (auth.uid === $uid && root.child('users').child(auth.uid).child('status').val() === 'approved' && root.child('flights').child($flightId).child('status').val() === 'open' && !data.exists()))",
             ".validate": "((root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')) || newData.child('uid').val() === auth.uid"
           }
+        },
+        "attendance": {
+          "$entryId": {
+            ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')"
+          }
         }
       }
     }
   }
 }
+
