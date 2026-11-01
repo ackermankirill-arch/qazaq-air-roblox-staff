@@ -19,7 +19,7 @@
     "flights": {
       ".read": "auth != null && ((root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT') || root.child('users').child(auth.uid).child('status').val() === 'approved')",
       "$flightId": {
-        ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')",
+        ".write": "auth != null && !newData.exists() && (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')",
 
         "number": {
           ".write": "auth != null && (root.child('admins').child(auth.uid).val() === true || root.child('users').child(auth.uid).child('role').val() === 'Хост' || root.child('users').child(auth.uid).child('role').val() === 'Фаундер' || root.child('users').child(auth.uid).child('role').val() === 'IT')"
